@@ -1,0 +1,26 @@
+public class LoseException2 {  
+    static void i() throws ImportantException{  
+        throw new ImportantException();  
+    }  
+    static void l() throws LightException{  
+        throw new LightException();  
+    }  
+    public static void main(String[] args) {  
+        try{  
+            try {  
+                i();  
+            }
+            finally{  
+//            	l();	
+            	//再finally 中调用try块来解决异常丢失的问题
+                try {
+                	l();
+				} catch (Exception e) {
+					  e.printStackTrace();  
+				}
+            }   
+        }catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}  
