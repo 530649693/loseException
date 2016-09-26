@@ -1,0 +1,29 @@
+class ImportantException extends Exception{  
+    public String toString(){  
+        return "import";  
+    }  
+}  
+class LightException extends Exception{  
+    public String toString(){  
+        return "light";  
+    }  
+}  
+  
+public class LoseException {  
+    static void i() throws ImportantException{  
+        throw new ImportantException();  
+    }  
+    static void l() throws LightException{  
+        throw new LightException();  
+    }  
+    public static void main(String[] args) {  
+        try{  
+            try {  
+                i();  
+             }finally{  
+                l();}   
+        }catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
